@@ -76,15 +76,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //import './js/ctrl/viewCtrl.js' ;
 
 
-//import MainMenuDirective, {MAIN_MENU_DIRECTIVE } from './menuDirect.js';
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0_angular___default.a.module('app',[])
-    .directive('mainmenu', __WEBPACK_IMPORTED_MODULE_1__direct_menuDirect_js__["a" /* default */]));
-//.directive('MainMenuDirective', () => new MainMenuDirective())
-
-
-//.directive(MAIN_MENU_DIRECTIVE, MainMenuDirective);
+    .directive('mainMenu', __WEBPACK_IMPORTED_MODULE_1__direct_menuDirect_js__["a" /* default */]));
 
 
 /***/ }),
@@ -33936,41 +33932,23 @@ $provide.value("$locale", {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = mainMenu;
 //директива для отрисовки основного меню
-//import {MAIN_MENU_CTRL} from './js/ctrl/menuCtrl.js';
-
-//import tmplt from './pages/main-menu.html';
 
 
-//export default class MainMenuDirective {
-//    constructor() {
-//        this.restrict = 'E',
-//            this.templateUrl = tmplt,
-//            this.scope = {}
-//            //            this.controller = MAIN_MENU_CTRL,
-//            //            this.controller = MainMenuCtrl
-//    } //constructor
-//
-//
-//
-//    link(scope, element) {
-//        // посмотьреть, что происходит в момент создания
-//        console.log('state', scope.state);
-//        console.log('service', scope.service)
-//    } // link
-//
-//} // class
-//
-//// export const MAIN_MENU_DIRECTIVE = MainMenuDirective;
+function mainMenu() {
+    var directive = {
+        link: link,
+        templateUrl: '/pages/main-menu.html',
+        restrict: 'EA'
+    };
+    return directive;
 
-class MainMenuDirective {
-  constructor() {
+    function link() {
+        console.log('mainMenu -- onCreate')
       
-    this.name = "Bobby Tables";
-  }
+    }
 }
-/* harmony export (immutable) */ __webpack_exports__["a"] = MainMenuDirective;
-
 
 /***/ })
 /******/ ]);
