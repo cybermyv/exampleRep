@@ -72,6 +72,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_angular__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_angular___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_angular__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__direct_menuDirect_js__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__direct_viewDirect_js__ = __webpack_require__(4);
 
 //import './js/ctrl/viewCtrl.js' ;
 
@@ -79,9 +80,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-/* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0_angular___default.a.module('app',[])
-    .directive('mainMenu', __WEBPACK_IMPORTED_MODULE_1__direct_menuDirect_js__["a" /* default */]));
 
+
+/* harmony default export */ __webpack_exports__["default"] = (__WEBPACK_IMPORTED_MODULE_0_angular___default.a.module('app',[])
+    .directive('mainMenu', __WEBPACK_IMPORTED_MODULE_1__direct_menuDirect_js__["a" /* default */])
+    .directive('tableList', __WEBPACK_IMPORTED_MODULE_2__direct_viewDirect_js__["a" /* default */]));
+
+
+
+//http://devacademy.ru/posts/rukovodstvo-po-stilyu-programmirovaniya-i-oformleniya-prilozhenij-na-angularjs/
 
 /***/ }),
 /* 1 */
@@ -33933,7 +33940,10 @@ $provide.value("$locale", {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = mainMenu;
-//директива для отрисовки основного меню
+/**
+ * @desc  директива для отрисовки основного меню
+ * @example <div main-menu></div>
+ */
 
 
 function mainMenu() {
@@ -33949,6 +33959,73 @@ function mainMenu() {
       
     }
 }
+
+/***/ }),
+/* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = tableList;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ctrl_viewCtrl_js__ = __webpack_require__(5);
+/**
+ * @desc  директива для грида и контроллер для получения данных
+ * @example <div table-list></div>
+ */
+
+
+
+function tableList() {
+    var directive = {
+        link: link,
+        templateUrl: '/pages/crud-view.html',
+        restrict: 'EA',
+        scope: {},
+        //controllerAs: vm,
+        controller: __WEBPACK_IMPORTED_MODULE_0__ctrl_viewCtrl_js__["a" /* default */]
+    };
+    return directive;
+
+    function link() {
+        console.log('tableList -- onCreate')
+
+    }
+}
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = viewCtrl;
+/**
+ * @desc контроллер для получения данных с сервера, данные будут отрисованы директиовой tableList
+ * @example 
+ */
+
+function viewCtrl($scope,$http) {
+console.log('viewCtrl');
+//    var vm = this;
+//    var vm.recs = [];
+////
+//    
+//         $http.get('http://jsonplaceholder.typicode.com/posts')
+//            .then(function (response) {
+//                vm.recs = response.data;
+//                console.log(vm.recs);
+//            });
+
+   // var vm = this;
+    var recs = [];
+
+         $http.get('http://jsonplaceholder.typicode.com/posts')
+            .then(function (response) {
+                $scope.recs = response.data;
+                console.log(recs);
+            });
+    
+    
+} // controller
 
 /***/ })
 /******/ ]);

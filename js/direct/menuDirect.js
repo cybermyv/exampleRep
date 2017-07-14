@@ -1,4 +1,7 @@
-//директива для отрисовки основного меню
+/**
+ * @desc  директива для отрисовки основного меню
+ * @example <div main-menu></div>
+ */
 
 
 export default function mainMenu() {
