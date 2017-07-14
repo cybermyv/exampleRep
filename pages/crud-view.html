@@ -1,0 +1,28 @@
+<!--темплейт для отображения всех записей из таблицы-->
+
+
+<table class="table-view">
+    <tthead>
+        <tr>
+            <th>ID</th>
+            <th>USER ID</th>
+            <th>TITLE</th>
+            <th>BODY</th>
+            <th>ACTIONS</th>
+        </tr>
+    </tthead>
+    <tbody>
+        <tr ng-repeat="rec in recs">
+            <td>{{id}}</td>
+            <td>{{userId}}</td>
+            <td>{{title}}</td>
+            <td>{{body}}</td>
+            <td>
+                <a href="">Edit</a>
+                <a href="">Del</a>
+            </td>
+        </tr>
+    </tbody>
+
+
+</table>

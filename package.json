@@ -1,0 +1,14 @@
+{
+  "name": "angular-app",
+  "version": "1.0.0",
+  "description": "CRUD-приложение на Angula 1.6",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mironov Y",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.6.5"
+  }
+}
