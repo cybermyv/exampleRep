@@ -1,5 +1,5 @@
 <!--темплейт для отображения всех записей из таблицы-->
-
+<!--<link rel="stylesheet" href="app/view/view.css">-->
 
 <table class="table-view">
     <tthead>
@@ -12,13 +12,13 @@
         </tr>
     </tthead>
     <tbody>
-        <tr ng-repeat="rec in recs">
+        <tr ng-repeat="rec in $ctrl.recs">
             <td>{{rec.id}}</td>
             <td>{{rec.userId}}</td>
             <td>{{rec.title}}</td>
             <td>{{rec.body}}</td>
             <td>
-                <a href="">Edit</a>
+                <a ui-sref = "edit({id:rec.id})">Edit</a>
                 <a href="">Del</a>
             </td>
         </tr>
