@@ -3,12 +3,12 @@
  * @example <div table-list></div>
  */
 
-import viewCtrl from './../ctrl/viewCtrl.js';
+import viewCtrl from './../../js/ctrl/viewCtrl.js';
 
 export default function tableList() {
     var directive = {
         link: link,
-        templateUrl: '/pages/crud-view.html',
+        templateUrl: 'crud-view.html',
         restrict: 'EA',
         scope: {},
         //controllerAs: vm,

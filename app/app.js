@@ -2,8 +2,8 @@ import angular from 'angular';
 //import './js/ctrl/viewCtrl.js' ;
 
 
-import mainMenu from './direct/menuDirect.js';
-import tableList from './direct/viewDirect.js';
+import mainMenu from './../js/direct/menuDirect.js';
+import tableList from './../js/direct/viewDirect.js';
 
 
 
