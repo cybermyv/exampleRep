@@ -46304,15 +46304,16 @@ viewModule.config(($stateProvider, $urlRouterProvider) => {
                 multiSelect: false
 
             };
-            //$scope.gridOptions.onRegisterApi = gridApi => {
-            //    $scope.gridApi = gridApi;
-            //
-            //    $scope.mySelectedRows = $scope.gridApi.selection.getSelectedRows();
-            //
-            //    gridApi.selection.on.rowSelectionChanged($scope, row=>
-            //        $scope.mySelectedRows = row
-            //    );
-            //};
+            $scope.gridOptions.onRegisterApi = gridApi => {
+                $scope.gridApi = gridApi;
+
+                $scope.mySelectedRows = $scope.gridApi.selection.getSelectedRows();
+
+                gridApi.selection.on.rowSelectionChanged($scope, row => {
+                    $scope.mySelectedRows = row;
+                    console.log(row);
+                });
+            };
         } //controller
 
     });
