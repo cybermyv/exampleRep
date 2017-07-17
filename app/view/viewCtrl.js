@@ -1,16 +1,32 @@
 /**
- * @desc контроллер для получения данных с сервера, данные будут отрисованы директиовой tableList
+ * @desc контроллер для получения данных с сервера
  * @example
  */
+import angular from 'angular';
+import 'angular-ui-router';
+import './../services';
+import  'angular-ui-grid';
 
-export default function viewCtrl( $http) {
-    var vm = this;
+let viewModule = angular.module('app.view',
+    [
+        'ui.router',
+        'services',
+        'ui.grid',
+        'ui.grid.edit',
+        'ui.grid.selection',
+        'ui.grid.resizeColumns'
+    ]);
 
-    $http.get('http://jsonplaceholder.typicode.com/posts')
-        .then(function (response) {
-            vm.recs = response.data;
-            console.log(vm.recs);
-        });
-
-
-} // controller
+export default viewModule;
+//--- убрать потом
+//export default function viewCtrl( $http) {
+//    var vm = this;
+//
+//    $http.get('http://jsonplaceholder.typicode.com/posts')
+//        .then(function (response) {
+//            vm.recs = response.data;
+//            console.log(vm.recs);
+//        });
+//
+//
+//} // controller
