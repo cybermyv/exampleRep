@@ -6,8 +6,6 @@
 import viewCtrl from './viewctrl.js';
 import './view.css';
 
-
-
 export default function viewDirective() {
    return {
         link: link,
@@ -18,6 +16,6 @@ export default function viewDirective() {
         controller: viewCtrl
     };
     function link() {
-        console.log('viewDirective -- onCreate');
+        //console.log('viewDirective -- onCreate');
     }
 }
