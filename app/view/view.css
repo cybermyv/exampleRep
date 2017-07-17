@@ -1,0 +1,8 @@
+.table-view {
+    border-collapse: collapse;
+}
+
+.table-view th,
+.table-view td{
+    border: 1px solid black;
+}

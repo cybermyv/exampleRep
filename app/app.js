@@ -1,16 +1,17 @@
 import angular from 'angular';
+import ngResource from 'angular-resource';
+
 //import './js/ctrl/viewCtrl.js' ;
 
 
-import mainMenu from './../js/direct/menuDirect.js';
-import tableList from './../js/direct/viewDirect.js';
+import mainMenu from './menu/menuDirect.js';
+import tableList from './view/viewDirect.js';
 
 
-
-export default angular.module('app',[])
-    .directive('mainMenu', mainMenu)
-    .directive('tableList', tableList);
-
+export default angular.
+                module('app', ['ngResource'])
+                    .directive('mainMenu', mainMenu)
+                    .directive('tableList', tableList);
 
 
 //http://devacademy.ru/posts/rukovodstvo-po-stilyu-programmirovaniya-i-oformleniya-prilozhenij-na-angularjs/

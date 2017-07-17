@@ -3,21 +3,23 @@
  * @example <div table-list></div>
  */
 
-import viewCtrl from './../../js/ctrl/viewCtrl.js';
+import viewCtrl from './viewCtrl.js';
+//import template from '/view.html';
+import './view.css';
+
 
 export default function tableList() {
-    var directive = {
+   return {
         link: link,
-        templateUrl: 'crud-view.html',
+        templateUrl:'app/view/view.html',
         restrict: 'EA',
         scope: {},
-        //controllerAs: vm,
+        controllerAs: 'vm',
         controller: viewCtrl
     };
-    return directive;
-
     function link() {
-        console.log('tableList -- onCreate')
+        console.log('viewCtrl -- onCreate');
+
 
     }
 }
