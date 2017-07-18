@@ -7,15 +7,19 @@
 </head>
 
 <body>
-<!--&lt;!&ndash;Меню - добавить новую запись&ndash;&gt;-->
-<!--<div main-menu></div>-->
-<!--&lt;!&ndash;Вывод грида&ndash;&gt;-->
-<!---->
-<!--<div view-directive></div>-->
-<!---->
 
-    <div class="menu">
-        <a href="#">CRUD приложение на Angular</a>
+    <div class="navbar navbar-default">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">CRUD приложение на Angular </a>
+        </div>
+
+
+        <ul class="nav navbar-nav">
+
+            <li><a ui-sref="view">Загрузить данные с сервера</a></li>
+            <li><a ui-sref="#">Обновить данные в таблице</a></li>
+
+        </ul>
     </div>
 
     <div ui-view=""></div>

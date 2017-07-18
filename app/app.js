@@ -1,6 +1,12 @@
 import angular from 'angular';
 import 'angular-resource';
 import 'angular-ui-router';
+//import 'angular-bootstrap';
+//import './css/bootstrap.css';
+//import './css/ui-bootstrap-csp.css';
+
+
+
 import './services';
 import  './view/viewctrl';
 

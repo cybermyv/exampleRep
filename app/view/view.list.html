@@ -1,9 +1,9 @@
 <!--темплейт для отображения всех записей из таблицы-->
 
-<div class="view-wrapper">
+<div class="container view-wrapper">
 
-    <div class="nav">
-        <ul class="nav-bar">
+    <div class="navbar navbar-default">
+        <ul class="nav navbar-nav">
             <li><a ui-sref="view.add">Добавить новую запись</a></li>
             <li><a ng-click="removing()">Удалить запись</a></li>
             <li><a ui-sref="view.edit({id:mySelectedRows.entity.id})">Редактировать запись</a></li>

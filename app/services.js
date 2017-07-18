@@ -8,7 +8,6 @@ let services = angular.module('services', ['ngResource'])
     .service('ViewService',
         function($resource){
 
-        //return $resource('/api/view/:id',
         return $resource('http://jsonplaceholder.typicode.com/posts/:id',
             {id:'@id'},
             {update:{method: 'PUT'}}
