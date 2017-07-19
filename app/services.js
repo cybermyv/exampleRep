@@ -4,15 +4,17 @@
 import angular from 'angular';
 
 
+
 let services = angular.module('services', ['ngResource'])
     .service('ViewService',
-        function($resource){
+        function ($resource) {
 
-        return $resource('http://jsonplaceholder.typicode.com/posts/:id',
-            {id:'@id'},
-            {update:{method: 'PUT'}}
-        )
+            return $resource('http://jsonplaceholder.typicode.com/posts/:id',
+                {id: '@id'},
+                {update: {method: 'PUT'}}
+            )
 
-    });
+
+        });
 
 export default services;

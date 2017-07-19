@@ -2,44 +2,38 @@
  * @desc view - контроллер
  */
 import angular from 'angular';
-//import 'angular-ui-router';
+
+import 'angular-resource';
+
+import 'angular-ui-router'
 import './../services';
 import  'angular-ui-grid';
 import './view.css';
 import './../css/ui-grid.css';
-////import 'angular-bootstrap/ui-bootstrap';
-////import 'angular-bootstrap/ui-bootstrap-tpls';
-//
-////import './../css/ui-bootstrap-csp.css';
-import 'angular-ui-bootstrap';
-//import 'angular-ui-bootstrap/dist/ui-bootstrap';
-//import 'angular-ui-bootstrap/dist/ui-bootstrap-tpls';
-//import 'angular-ui-bootstrap/dist/ui-bootstrap-csp.css';
-import './../css/bootstrap.css';
-
+import 'ng-dialog';
 
 let viewModule = angular.module('app.view',
     [
-        'ui.router',
         'services',
+        'ui.router',
         'ui.grid',
         'ui.grid.edit',
         'ui.grid.selection',
         'ui.grid.resizeColumns',
-        'ui.bootstrap'
+        'ngDialog'
     ]);
 
-viewModule.config(($stateProvider)=> {
+viewModule.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
         .state('view', {
             url: '/view',
             templateUrl: 'app/view/view.list.html',
             resolve: {
-                view: function(ViewService) {
+                view: function (ViewService) {
                     return ViewService.query().$promise
                 }
             },
-            controller: function ($scope, $state, $uibModal,  ViewService, view) {
+            controller: function ($scope, $state, ngDialog, ViewService, view) {
                 $scope.gridOptions = {
                     data: view,
                     columnDefs: [
@@ -66,60 +60,72 @@ viewModule.config(($stateProvider)=> {
                         //  debugger;
                     });
                 };
-                $scope.removing = function(){
+                $scope.removing = function () {
 
-                    $scope.employeer = $scope.mySelectedRows.entity;
+                    $scope.view = $scope.mySelectedRows.entity;
 
-                  //  console.log($scope.employeer);
 
-                    if(!$scope.employeer){
+                    if (!$scope.view) {
                         alert('Запись не выбрана');
                     } else {
-                        var modalInstance = $uibModal.open({
+                        var dialog = ngDialog.openConfirm({
                             templateUrl: 'app/view/view.del.html',
+                            className: 'ngdialog-theme-default',
                             scope: $scope
                         });
 
-                        modalInstance.result
-                            .then(
-                                function(){
-                                    $scope.view.$delete();
-                                    $state.reload();
-                                },
-                                function (){
-                                    //  $state.go('^');
-                                }
-                            )
+                        //
+                        //dialog.then(function (data) {
+                        //    console.log(data.id + ' has been dismissed.');
+                        //});
+
+                        dialog.then(
+                            function (value) {
+                                console.log($scope.view);
+                                $scope.view.$delete();
+                                $state.reload();
+                            },
+                            function (reason) {
+                                console.log('Modal promise rejected. Reason: ', reason);
+                                //   $state.go('^');
+                            }
+                        );
+
+
                     }
                 };
 
             }//controller
 
-        }) // state.view
-    .state('view.add',{
-        url : '/add',
-        template: '<ui-view>',
-        controller: function($scope, $state, $uibModal, ViewService){
-            $scope.view = new ViewService();
+        })
+        .state('view.add', {
+            url: '/add',
+            //template: '<ui-view></ui-view>',
 
-            console.log('moduleInst');
+            controller: function ($scope, $state, ngDialog, ViewService) {
 
-            var modalInstance = $uibModal.open({
+                $scope.viewVal = new ViewService();
 
-               templateUrl:'app/view//view.add.html',
-                scope: $scope
-            });//modalInst
+                var dialog = ngDialog.open({
+                    templateUrl: 'app/view/view.add.html',
+                    className: 'ngdialog-theme-default',
+                    scope: $scope
+                });
 
-            modalInstance.result
-                .then(
-                    function(){
-                        $scope.view.$save();
+
+                dialog.then(
+                    function (value) {
+                        console.log($scope.viewVal);
+                        $scope.viewVal.$save();
                         $state.go('^', null, {reload: true});
-                },
-                    function() {$state.go('^')}
-                )
-        }
-    })//state.add
+                    },
+                    function (reason) {
+                        console.log('Modal promise rejected. Reason: ', reason);
+                          $state.go('^');
+                    }
+                );
+            }
+        })
 });
 
 export default viewModule;

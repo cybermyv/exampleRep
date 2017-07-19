@@ -1,32 +1,31 @@
 <!--темплейт для отображения подтверждения удаления-->
 
-<!--темплейт для отображения диалога добавления новой записи-->
 
 <div class="modal-header">
-
-    <button type="button" class="close" aria-label="Close" ng-click="$dismiss()"><span aria-hidden="true">&times;</span></button>
-    <h4>Добавление новой записи</h4>
+    <!--<button class="close" type="button" ng-click="$dismiss()">x</button>-->
+    <h4>Уверены, что хотите удалить</h4>
 </div>
-
 <div class="modal-body">
-    <form class="addView" name="addView">
 
-        label for="idView">ID</label>
-        <input type="number" id="idView" class="form-control" ng-model="view.id">
+    <p ng-repeat='view in mySelectedRows'>{{::view.title}} </p>
 
-        label for="idView">UserId</label>
-        <input type="number" id="userIdView" class="form-control" ng-model="view.userId">
-
-        label for="titledView">Title</label>
-        <input type="text" id="titledView" class="form-control" ng-model="view.title">
-
-        label for="bodydView">Body</label>
-        <input type="text" id="bodydView" class="form-control" ng-model="view.body">
-
-    </form>
 </div>
-
 <div class="modal-footer">
-    <button class="btn btn-default" ng-click="$dismiss()">Закрыть</button>
-    <button class="btn btn-danger" ng-click="$close()">Сохранить</button>
+    <!--<button class="btn btn-default" ng-click="$dismiss()">Отмена</button>-->
+    <!--<button class="btn btn-danger" ng-click="$close()">Удалить</button>-->
+    <!---->
+    <button class="btn btn-default" ng-click="closeThisDialog('button')">Отмена</button>
+    <button class="btn btn-danger" ng-click="confirm('OK')">Удалить</button>
+
 </div>
+
+
+<!--<div class="dialog-contents">-->
+    <!--<div class="modal-header">-->
+        <!--<h4>Уверены, что хотите удалить</h4>-->
+    <!--</div>-->
+    <!--<p ng-repeat='view in mySelectedRows'>{{::view.title}} </p>-->
+
+    <!--<button ng-click="closeThisDialog()">Отмена</button>-->
+    <!--<button ng-click="confirm()">Удалить</button>-->
+<!--</div>-->
